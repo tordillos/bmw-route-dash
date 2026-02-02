@@ -1,0 +1,1820 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "JjYOw",
+      "x": 0,
+      "y": 0,
+      "name": "Map Screen",
+      "clip": true,
+      "width": 393,
+      "height": 852,
+      "fill": "$bg-page",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "b9HqW",
+          "x": 0,
+          "y": 0,
+          "name": "Map Background",
+          "metadata": {
+            "type": "unsplash",
+            "username": "marmotdrones",
+            "link": "https://unsplash.com/@marmotdrones",
+            "author": "Marmot Drones"
+          },
+          "width": 393,
+          "height": 852,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1735011060905-5e38b818e9da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzAwMjk4ODh8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          }
+        },
+        {
+          "type": "frame",
+          "id": "SWgrp",
+          "x": 0,
+          "y": 0,
+          "name": "Status Bar",
+          "width": 393,
+          "height": 54,
+          "padding": [
+            14,
+            24,
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "hbRDZ",
+              "name": "timeText",
+              "fill": "$text-primary",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "kBghU",
+              "name": "statusRight",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "Dweij",
+                  "name": "sigIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "signal",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "cOkHp",
+                  "name": "wifiIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "wifi",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "oUzap",
+                  "name": "batIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "battery-full",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "buiSe",
+          "type": "ref",
+          "ref": "BjgTh",
+          "x": 16,
+          "y": 64,
+          "name": "searchInst"
+        },
+        {
+          "type": "frame",
+          "id": "QwtsF",
+          "x": 341,
+          "y": 380,
+          "name": "Map Actions",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "frame",
+              "id": "gkmcl",
+              "name": "Layers Btn",
+              "width": 40,
+              "height": 40,
+              "fill": "$bg-surface",
+              "cornerRadius": 10,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000040",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 8
+              },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "oXuiR",
+                  "name": "layersIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "layers",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-secondary"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EgZFO",
+              "name": "Locate Btn",
+              "width": 40,
+              "height": 40,
+              "fill": "$bg-surface",
+              "cornerRadius": 10,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000040",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 8
+              },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "ThACw",
+                  "name": "locateIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "locate",
+                  "iconFontFamily": "lucide",
+                  "fill": "$orange-primary"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OObrl",
+              "name": "Compass Btn",
+              "width": 40,
+              "height": 40,
+              "fill": "$bg-surface",
+              "cornerRadius": 10,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-subtle"
+              },
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#00000040",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 8
+              },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "9GIrh",
+                  "name": "compassIcon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "compass",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-secondary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "U6L4L",
+          "x": 174,
+          "y": 390,
+          "name": "Moto Marker",
+          "width": 44,
+          "height": 44,
+          "fill": "$orange-primary",
+          "cornerRadius": 22,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#FF5C0066",
+            "blur": 20,
+            "spread": 4
+          },
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "tcvkm",
+              "name": "motoIcon",
+              "width": 22,
+              "height": 22,
+              "iconFontName": "bike",
+              "iconFontFamily": "lucide",
+              "fill": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "KmbqR",
+          "x": 0,
+          "y": 660,
+          "name": "Route Info Panel",
+          "width": 393,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#0A0A0BFF",
+                "position": 1
+              },
+              {
+                "color": "#0A0A0B00",
+                "position": 0
+              }
+            ]
+          },
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            32,
+            16,
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "txzcw",
+              "name": "routeHeader",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n99ig",
+                  "name": "routeTitle",
+                  "fill": "$text-primary",
+                  "content": "Ruta activa",
+                  "fontFamily": "Instrument Serif",
+                  "fontSize": 22
+                },
+                {
+                  "type": "frame",
+                  "id": "sH4bn",
+                  "name": "routeStatus",
+                  "fill": "$orange-tint",
+                  "cornerRadius": 100,
+                  "gap": 6,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "TuhZP",
+                      "name": "statusDot",
+                      "fill": "$orange-primary",
+                      "width": 6,
+                      "height": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "7UHlj",
+                      "name": "statusText",
+                      "fill": "$orange-primary",
+                      "content": "En curso",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "0u00D",
+              "name": "routeStats",
+              "width": "fill_container",
+              "justifyContent": "space_around",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "7KB6F",
+                  "name": "stat1",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "j3VcO",
+                      "name": "stat1Val",
+                      "fill": "$text-primary",
+                      "content": "67.2",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 20,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SMfPq",
+                      "name": "stat1Lab",
+                      "fill": "$text-disabled",
+                      "content": "km",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lGg3T",
+                  "name": "stat2",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TgsG4",
+                      "name": "stat2Val",
+                      "fill": "$text-primary",
+                      "content": "52",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 20,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NfXNO",
+                      "name": "stat2Lab",
+                      "fill": "$text-disabled",
+                      "content": "min",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "k7v2q",
+                  "name": "stat3",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SFnKO",
+                      "name": "stat3Val",
+                      "fill": "$orange-primary",
+                      "content": "78",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 20,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "9Wipf",
+                      "name": "stat3Lab",
+                      "fill": "$text-disabled",
+                      "content": "km/h avg",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WjUAt",
+                  "name": "stat4",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aYq09",
+                      "name": "stat4Val",
+                      "fill": "$text-primary",
+                      "content": "340",
+                      "fontFamily": "DM Mono",
+                      "fontSize": 20,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tsVZM",
+                      "name": "stat4Lab",
+                      "fill": "$text-disabled",
+                      "content": "m elev",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Lft7d",
+          "type": "ref",
+          "ref": "556gT",
+          "x": 0,
+          "y": 780,
+          "name": "navInst"
+        },
+        {
+          "type": "frame",
+          "id": "Dvd37",
+          "x": 106,
+          "y": 606,
+          "name": "Start Route Btn",
+          "width": 180,
+          "height": 48,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 135,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#FF5C00",
+                "position": 0
+              },
+              {
+                "color": "#FF8A4C",
+                "position": 1
+              }
+            ]
+          },
+          "cornerRadius": 24,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#FF5C0044",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 20
+          },
+          "gap": 8,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "xCeCi",
+              "name": "startIcon",
+              "width": 18,
+              "height": 18,
+              "iconFontName": "navigation",
+              "iconFontFamily": "lucide",
+              "fill": "#FFFFFF"
+            },
+            {
+              "type": "text",
+              "id": "wjKcu",
+              "name": "startText",
+              "fill": "#FFFFFF",
+              "content": "Iniciar ruta",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "M41XI",
+          "x": 16,
+          "y": 400,
+          "name": "Speed Indicator",
+          "width": 56,
+          "height": 56,
+          "fill": "$bg-surface",
+          "cornerRadius": 28,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$border-subtle"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000040",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 10
+          },
+          "layout": "vertical",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "q7hSr",
+              "name": "speedVal",
+              "fill": "$text-primary",
+              "content": "78",
+              "fontFamily": "DM Mono",
+              "fontSize": 18,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "7NmcJ",
+              "name": "speedUnit",
+              "fill": "$text-disabled",
+              "content": "km/h",
+              "fontFamily": "Inter",
+              "fontSize": 8,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "2pUBV",
+      "x": 450,
+      "y": 0,
+      "name": "Profile Screen",
+      "clip": true,
+      "width": 393,
+      "height": 917,
+      "fill": "$bg-page",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "vIIqH",
+          "name": "Status Bar",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            24,
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "JTOtZ",
+              "name": "profTime",
+              "fill": "$text-primary",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "U7Lv2",
+              "name": "profStatusR",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "sW9AE",
+                  "name": "profSig",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "signal",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "bFGhw",
+                  "name": "profWifi",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "wifi",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "UQ9ZW",
+                  "name": "profBat",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "battery-full",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HSW9Q",
+          "name": "Profile Header",
+          "width": "fill_container",
+          "padding": [
+            8,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "32CM7",
+              "name": "profTitle",
+              "fill": "$text-primary",
+              "content": "Perfil",
+              "fontFamily": "Instrument Serif",
+              "fontSize": 28
+            },
+            {
+              "type": "frame",
+              "id": "nkQNV",
+              "name": "profSettings",
+              "width": 36,
+              "height": 36,
+              "fill": "$bg-elevated",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "hgB7t",
+                  "name": "profSettIcon",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "settings",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-secondary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "KDRat",
+          "name": "Avatar Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 16,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "8doQF",
+              "name": "Avatar",
+              "width": 80,
+              "height": 80,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 135,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#FF5C00",
+                    "position": 0
+                  },
+                  {
+                    "color": "#FF8A4C",
+                    "position": 1
+                  }
+                ]
+              },
+              "cornerRadius": 40,
+              "layout": "vertical",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YFyCr",
+                  "name": "avatarInit",
+                  "fill": "#FFFFFF",
+                  "content": "MR",
+                  "fontFamily": "Inter",
+                  "fontSize": 28,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "fIyZe",
+              "name": "nameText",
+              "fill": "$text-primary",
+              "content": "Marco Rodriguez",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "lpiFl",
+              "name": "handleText",
+              "fill": "$text-tertiary",
+              "content": "@marcorides_f800gt",
+              "fontFamily": "DM Mono",
+              "fontSize": 12
+            },
+            {
+              "type": "frame",
+              "id": "51qu3",
+              "name": "Bike Badge",
+              "fill": "$bg-elevated",
+              "cornerRadius": 100,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "gap": 8,
+              "padding": [
+                8,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "RN0rd",
+                  "name": "bikeIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "bike",
+                  "iconFontFamily": "lucide",
+                  "fill": "$orange-primary"
+                },
+                {
+                  "type": "text",
+                  "id": "jE9hj",
+                  "name": "bikeText",
+                  "fill": "$text-secondary",
+                  "content": "BMW F800GT · 2024",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PO2U5",
+          "name": "Stats Row",
+          "width": "fill_container",
+          "gap": 10,
+          "padding": [
+            4,
+            16
+          ],
+          "children": [
+            {
+              "id": "WtZup",
+              "type": "ref",
+              "ref": "59mGw",
+              "width": "fill_container",
+              "name": "sc1",
+              "descendants": {
+                "ssI0x": {
+                  "content": "12,450"
+                },
+                "xIJdb": {
+                  "content": "km totales"
+                }
+              }
+            },
+            {
+              "id": "joFt7",
+              "type": "ref",
+              "ref": "59mGw",
+              "width": "fill_container",
+              "name": "sc2",
+              "descendants": {
+                "ssI0x": {
+                  "content": "38"
+                },
+                "xIJdb": {
+                  "content": "rutas"
+                }
+              }
+            },
+            {
+              "id": "rmGSd",
+              "type": "ref",
+              "ref": "59mGw",
+              "width": "fill_container",
+              "name": "sc3",
+              "descendants": {
+                "ssI0x": {
+                  "content": "86",
+                  "fill": "$orange-primary"
+                },
+                "xIJdb": {
+                  "content": "km/h avg"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gQNVG",
+          "name": "Menu Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "YsqOJ",
+              "name": "menuTitle",
+              "fill": "$text-disabled",
+              "content": "CUENTA",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 1
+            },
+            {
+              "id": "6Van0",
+              "type": "ref",
+              "ref": "joCfe",
+              "width": "fill_container",
+              "name": "mr1"
+            },
+            {
+              "id": "gjS6s",
+              "type": "ref",
+              "ref": "joCfe",
+              "width": "fill_container",
+              "name": "mr2"
+            },
+            {
+              "id": "b36o7",
+              "type": "ref",
+              "ref": "joCfe",
+              "width": "fill_container",
+              "name": "mr3"
+            },
+            {
+              "id": "P7Ut5",
+              "type": "ref",
+              "ref": "joCfe",
+              "width": "fill_container",
+              "name": "mr4"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Vz9MC",
+          "name": "Menu Section 2",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            0,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "QJmLu",
+              "name": "menuTitle2",
+              "fill": "$text-disabled",
+              "content": "SOPORTE",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 1
+            },
+            {
+              "id": "jAv62",
+              "type": "ref",
+              "ref": "joCfe",
+              "width": "fill_container",
+              "name": "mr5"
+            },
+            {
+              "id": "3CUA7",
+              "type": "ref",
+              "ref": "joCfe",
+              "width": "fill_container",
+              "name": "mr6"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mezgs",
+          "name": "spacer",
+          "width": "fill_container",
+          "height": "fill_container"
+        },
+        {
+          "id": "3GvPQ",
+          "type": "ref",
+          "ref": "556gT",
+          "width": "fill_container",
+          "name": "profNav",
+          "x": 0,
+          "y": 845,
+          "descendants": {
+            "Rzwar": {
+              "fill": "$text-disabled"
+            },
+            "ctpO0": {
+              "fill": "$text-disabled",
+              "fontWeight": "500"
+            },
+            "VJxSs": {
+              "fill": "$orange-primary"
+            },
+            "GD2zQ": {
+              "fill": "$orange-primary",
+              "fontWeight": "600"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "u6q6b",
+      "x": 900,
+      "y": 0,
+      "name": "Saved Routes",
+      "clip": true,
+      "width": 393,
+      "height": 852,
+      "fill": "$bg-page",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "rc3In",
+          "name": "Status Bar",
+          "width": "fill_container",
+          "height": 54,
+          "padding": [
+            14,
+            24,
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "4m2LR",
+              "name": "rtTime",
+              "fill": "$text-primary",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "4UcIV",
+              "name": "rtStatusR",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "7jYdZ",
+                  "name": "rtSig",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "signal",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "kb2HU",
+                  "name": "rtWifi",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "wifi",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "cAYUS",
+                  "name": "rtBat",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "battery-full",
+                  "iconFontFamily": "lucide",
+                  "fill": "$text-primary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Tr9n5",
+          "name": "Routes Header",
+          "width": "fill_container",
+          "padding": [
+            8,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "c151Z",
+              "name": "rtTitle",
+              "fill": "$text-primary",
+              "content": "Mis Rutas",
+              "fontFamily": "Instrument Serif",
+              "fontSize": 28
+            },
+            {
+              "type": "frame",
+              "id": "lIvT3",
+              "name": "rtAddBtn",
+              "width": 36,
+              "height": 36,
+              "fill": "$orange-primary",
+              "cornerRadius": 10,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "M5n3R",
+                  "name": "rtAddIcon",
+                  "width": 18,
+                  "height": 18,
+                  "iconFontName": "plus",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QbZFV",
+          "name": "Filter Row",
+          "width": "fill_container",
+          "gap": 8,
+          "padding": [
+            4,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "vlTKy",
+              "name": "fAll",
+              "fill": "$orange-primary",
+              "cornerRadius": 100,
+              "padding": [
+                6,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gxvez",
+                  "name": "fAllText",
+                  "fill": "#FFFFFF",
+                  "content": "Todas",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "7JljL",
+              "name": "fFav",
+              "fill": "$bg-elevated",
+              "cornerRadius": 100,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "padding": [
+                6,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GXhF5",
+                  "name": "fFavText",
+                  "fill": "$text-secondary",
+                  "content": "Favoritas",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ZSOUX",
+              "name": "fRecent",
+              "fill": "$bg-elevated",
+              "cornerRadius": 100,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "padding": [
+                6,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Z9Ftj",
+                  "name": "fRecentText",
+                  "fill": "$text-secondary",
+                  "content": "Recientes",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pwky6",
+              "name": "fMont",
+              "fill": "$bg-elevated",
+              "cornerRadius": 100,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border-default"
+              },
+              "padding": [
+                6,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Lu7pR",
+                  "name": "fMontText",
+                  "fill": "$text-secondary",
+                  "content": "Montana",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cZdxl",
+          "name": "Routes List",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": [
+            4,
+            16
+          ],
+          "children": [
+            {
+              "id": "4gqQS",
+              "type": "ref",
+              "ref": "ZeQhs",
+              "width": "fill_container",
+              "name": "rc1"
+            },
+            {
+              "id": "SjjEr",
+              "type": "ref",
+              "ref": "ZeQhs",
+              "width": "fill_container",
+              "name": "rc2"
+            },
+            {
+              "id": "FekLw",
+              "type": "ref",
+              "ref": "ZeQhs",
+              "width": "fill_container",
+              "name": "rc3"
+            },
+            {
+              "id": "xB4tk",
+              "type": "ref",
+              "ref": "ZeQhs",
+              "width": "fill_container",
+              "name": "rc4"
+            },
+            {
+              "id": "isDDO",
+              "type": "ref",
+              "ref": "ZeQhs",
+              "width": "fill_container",
+              "name": "rc5"
+            }
+          ]
+        },
+        {
+          "id": "ZpDw1",
+          "type": "ref",
+          "ref": "556gT",
+          "width": "fill_container",
+          "name": "rtNav",
+          "x": 0,
+          "y": 780,
+          "descendants": {
+            "Rzwar": {
+              "fill": "$text-disabled"
+            },
+            "ctpO0": {
+              "fill": "$text-disabled",
+              "fontWeight": "500"
+            },
+            "WHlb0": {
+              "fill": "$orange-primary"
+            },
+            "cMl5R": {
+              "fill": "$orange-primary",
+              "fontWeight": "600"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "556gT",
+      "x": -47,
+      "y": -477,
+      "name": "Component/BottomNav",
+      "reusable": true,
+      "width": 393,
+      "height": 72,
+      "fill": "$bg-surface",
+      "stroke": {
+        "align": "inside",
+        "thickness": {
+          "top": 1
+        },
+        "fill": "$border-subtle"
+      },
+      "padding": [
+        8,
+        16,
+        20,
+        16
+      ],
+      "justifyContent": "space_around",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ftfYn",
+          "name": "Nav Map",
+          "width": 64,
+          "layout": "vertical",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "Rzwar",
+              "name": "navMapIcon",
+              "width": 24,
+              "height": 24,
+              "iconFontName": "map",
+              "iconFontFamily": "lucide",
+              "fill": "$orange-primary"
+            },
+            {
+              "type": "text",
+              "id": "ctpO0",
+              "name": "navMapLabel",
+              "fill": "$orange-primary",
+              "content": "Mapa",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dG5uJ",
+          "name": "Nav Routes",
+          "width": 64,
+          "layout": "vertical",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "WHlb0",
+              "name": "navRoutesIcon",
+              "width": 24,
+              "height": 24,
+              "iconFontName": "route",
+              "iconFontFamily": "lucide",
+              "fill": "$text-disabled"
+            },
+            {
+              "type": "text",
+              "id": "cMl5R",
+              "name": "navRoutesLabel",
+              "fill": "$text-disabled",
+              "content": "Rutas",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IrD73",
+          "name": "Nav Profile",
+          "width": 64,
+          "layout": "vertical",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon_font",
+              "id": "VJxSs",
+              "name": "navProfileIcon",
+              "width": 24,
+              "height": 24,
+              "iconFontName": "user",
+              "iconFontFamily": "lucide",
+              "fill": "$text-disabled"
+            },
+            {
+              "type": "text",
+              "id": "GD2zQ",
+              "name": "navProfileLabel",
+              "fill": "$text-disabled",
+              "content": "Perfil",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "BjgTh",
+      "x": -47,
+      "y": -331,
+      "name": "Component/SearchBar",
+      "reusable": true,
+      "width": 361,
+      "height": 48,
+      "fill": "$bg-surface",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$border-default"
+      },
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#00000040",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "blur": 16
+      },
+      "gap": 10,
+      "padding": [
+        0,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "GymZ4",
+          "name": "searchIcon",
+          "width": 18,
+          "height": 18,
+          "iconFontName": "search",
+          "iconFontFamily": "lucide",
+          "fill": "$text-disabled"
+        },
+        {
+          "type": "text",
+          "id": "DXSrg",
+          "name": "searchText",
+          "fill": "$text-placeholder",
+          "content": "Buscar destino o ruta...",
+          "fontFamily": "Inter",
+          "fontSize": 14
+        },
+        {
+          "type": "icon_font",
+          "id": "GTyTq",
+          "name": "searchMoto",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "bike",
+          "iconFontFamily": "lucide",
+          "fill": "$orange-primary"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ZeQhs",
+      "x": -47,
+      "y": -232,
+      "name": "Component/RouteCard",
+      "reusable": true,
+      "width": 361,
+      "fill": "$bg-surface",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$border-subtle"
+      },
+      "gap": 14,
+      "padding": 14,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ewx00",
+          "name": "Route Thumbnail",
+          "width": 64,
+          "height": 64,
+          "fill": "$bg-elevated",
+          "cornerRadius": 8
+        },
+        {
+          "type": "frame",
+          "id": "BOW2f",
+          "name": "Route Info",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "children": [
+            {
+              "type": "text",
+              "id": "e7Fk7",
+              "name": "routeName",
+              "fill": "$text-primary",
+              "content": "Sierra de Guadarrama",
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "jRN2j",
+              "name": "routeMeta",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Zif88",
+                  "name": "routeDist",
+                  "fill": "$orange-primary",
+                  "content": "245 km",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 12
+                },
+                {
+                  "type": "ellipse",
+                  "id": "9Wb95",
+                  "name": "routeDot",
+                  "fill": "$text-disabled",
+                  "width": 3,
+                  "height": 3
+                },
+                {
+                  "type": "text",
+                  "id": "oFlCK",
+                  "name": "routeTime",
+                  "fill": "$text-secondary",
+                  "content": "3h 20min",
+                  "fontFamily": "DM Mono",
+                  "fontSize": 12
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "5ords",
+              "name": "routeDesc",
+              "fill": "$text-disabled",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Puerto de Navacerrada - Segovia",
+              "fontFamily": "Inter",
+              "fontSize": 12
+            }
+          ]
+        },
+        {
+          "type": "icon_font",
+          "id": "9zV5Z",
+          "name": "routeChevron",
+          "width": 18,
+          "height": 18,
+          "iconFontName": "chevron-right",
+          "iconFontFamily": "lucide",
+          "fill": "$text-disabled"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "59mGw",
+      "x": 465,
+      "y": -477,
+      "name": "Component/StatCard",
+      "reusable": true,
+      "fill": "$bg-surface",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$border-subtle"
+      },
+      "layout": "vertical",
+      "gap": 6,
+      "padding": 16,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "ssI0x",
+          "name": "statValue",
+          "fill": "$text-primary",
+          "content": "12,450",
+          "fontFamily": "DM Mono",
+          "fontSize": 22,
+          "fontWeight": "500",
+          "letterSpacing": -1
+        },
+        {
+          "type": "text",
+          "id": "xIJdb",
+          "name": "statLabel",
+          "fill": "$text-disabled",
+          "content": "km totales",
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "joCfe",
+      "x": 498,
+      "y": -309,
+      "name": "Component/MenuRow",
+      "reusable": true,
+      "width": 361,
+      "height": 52,
+      "fill": "$bg-surface",
+      "cornerRadius": 12,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": "$border-subtle"
+      },
+      "gap": 12,
+      "padding": [
+        0,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon_font",
+          "id": "Ienpj",
+          "name": "menuIcon",
+          "width": 20,
+          "height": 20,
+          "iconFontName": "settings",
+          "iconFontFamily": "lucide",
+          "fill": "$orange-primary"
+        },
+        {
+          "type": "text",
+          "id": "RcA2X",
+          "name": "menuLabel",
+          "fill": "$text-primary",
+          "content": "Configuracion",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "500"
+        },
+        {
+          "type": "icon_font",
+          "id": "LSw1a",
+          "name": "menuChevron",
+          "width": 18,
+          "height": 18,
+          "iconFontName": "chevron-right",
+          "iconFontFamily": "lucide",
+          "fill": "$text-disabled"
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-elevated": {
+      "type": "color",
+      "value": "#1A1A1D"
+    },
+    "bg-interactive": {
+      "type": "color",
+      "value": "#2A2A2E"
+    },
+    "bg-page": {
+      "type": "color",
+      "value": "#0A0A0B"
+    },
+    "bg-surface": {
+      "type": "color",
+      "value": "#111113"
+    },
+    "border-default": {
+      "type": "color",
+      "value": "#2A2A2E"
+    },
+    "border-subtle": {
+      "type": "color",
+      "value": "#1F1F23"
+    },
+    "green-success": {
+      "type": "color",
+      "value": "#22C55E"
+    },
+    "orange-light": {
+      "type": "color",
+      "value": "#FF8A4C"
+    },
+    "orange-primary": {
+      "type": "color",
+      "value": "#FF5C00"
+    },
+    "orange-tint": {
+      "type": "color",
+      "value": "#FF5C0018"
+    },
+    "red-error": {
+      "type": "color",
+      "value": "#EF4444"
+    },
+    "text-disabled": {
+      "type": "color",
+      "value": "#6B6B70"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#FFFFFFCC"
+    },
+    "text-placeholder": {
+      "type": "color",
+      "value": "#4A4A4E"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#ADADB0"
+    },
+    "text-tertiary": {
+      "type": "color",
+      "value": "#8B8B90"
+    }
+  }
+}
