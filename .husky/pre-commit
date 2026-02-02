@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Run lint-staged
+npx lint-staged
+
+# Branch name validation
+LC_ALL=C
+
+local_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+valid_branch_regex="^(feature|bugfix|improvement|library|prerelease|release|hotfix)\/([0-9]+)_[a-zA-Z0-9_-]+$|^(develop|main)$"
+
+message="\033[31;1;mx\033[0m Branch name must adhere to the format: <TASK_TYPE>/<TASK_REF>_<TASK_NAME> \n  Valid types are: \n   • feature\n   • bugfix\n   • improvement\n   • library\n   • prerelease\n   • release\n   • hotfix"
+
+if [[ ! $local_branch =~ $valid_branch_regex ]]
+then
+    echo "$message"
+    exit 1
+fi
+
+exit 0
