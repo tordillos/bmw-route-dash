@@ -10,8 +10,8 @@
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier \"**/*.{js,json,ts,tsx,md}\"",
     "format": "pnpm prettier --write",
-    "expo:doctor": "pnpx expo-doctor@latest",
-    "expo:doctor:fix": "pnpx expo install --check",
+    "expo:doctor": "npx expo-doctor@latest",
+    "expo:doctor:fix": "npx expo install --check",
     "clean": "rm -rf node_modules .expo",
     "nuke": "rm -rf node_modules .expo android ios"
   },
