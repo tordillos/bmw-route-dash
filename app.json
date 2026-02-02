@@ -3,7 +3,7 @@
     "name": "BMW Route Dash",
     "slug": "bmw-route-dash",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "bmwroutedash",
     "userInterfaceStyle": "automatic",
@@ -34,6 +34,12 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location.",
           "locationAlwaysPermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ],
+      [
+        "expo-screen-orientation",
+        {
+          "initialOrientation": "DEFAULT"
         }
       ]
     ],
