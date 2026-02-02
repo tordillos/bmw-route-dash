@@ -1,5 +1,9 @@
 {
   "permissions": {
-    "allow": ["Bash(pnpm type:check:*)"]
+    "allow": [
+      "Bash(pnpm type:check:*)",
+      "mcp__claude_ai_Figma__create_design_system_rules",
+      "WebSearch"
+    ]
   }
 }
