@@ -6,6 +6,7 @@
     "android": "pnpm expo run:android",
     "ios": "pnpm expo run:ios",
     "lint": "expo lint",
+    "prettier": "prettier \"**/*.{js,json,ts,tsx,md}\"",
     "format": "pnpm prettier --write"
   },
   "dependencies": {
