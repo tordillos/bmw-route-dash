@@ -6,8 +6,14 @@
     "android": "pnpm expo run:android",
     "ios": "pnpm expo run:ios",
     "lint": "expo lint",
+    "type:check": "tsc --noEmit",
+    "lint:fix": "pnpm lint --fix",
     "prettier": "prettier \"**/*.{js,json,ts,tsx,md}\"",
-    "format": "pnpm prettier --write"
+    "format": "pnpm prettier --write",
+    "expo:doctor": "pnpx expo-doctor@latest",
+    "expo:doctor:fix": "pnpx expo install --check",
+    "clean": "rm -rf node_modules .expo",
+    "nuke": "rm -rf node_modules .expo android ios"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
