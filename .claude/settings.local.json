@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pnpm type:check:*)",
       "mcp__claude_ai_Figma__create_design_system_rules",
-      "WebSearch"
+      "WebSearch",
+      "mcp__plugin_claude-mem_mcp-search__search"
     ]
   }
 }

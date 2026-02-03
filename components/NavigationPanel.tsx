@@ -6,6 +6,7 @@ import type { RouteStep } from "@/types/navigation";
 
 interface NavigationPanelProps {
   currentStep: RouteStep | undefined;
+  distanceToNextManeuver: number | undefined;
   remainingDistance: number;
   remainingDuration: number;
   onEnd: () => void;
@@ -41,6 +42,7 @@ function getManeuverIcon(type: string, modifier?: string): MaterialIconName {
 
 export default function NavigationPanel({
   currentStep,
+  distanceToNextManeuver,
   remainingDistance,
   remainingDuration,
   onEnd,
@@ -68,7 +70,7 @@ export default function NavigationPanel({
             {currentStep.maneuver.instruction}
           </Text>
           <Text style={styles.stepDistance}>
-            {formatDistance(currentStep.distance)}
+            {formatDistance(distanceToNextManeuver ?? currentStep.distance)}
           </Text>
         </View>
       </View>

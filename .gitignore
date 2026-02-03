@@ -41,3 +41,7 @@ yarn-error.*
 /android
 
 .env
+
+# Claude Code context files
+CLAUDE.md
+**/CLAUDE.md

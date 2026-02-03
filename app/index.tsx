@@ -1,7 +1,7 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Mapbox from "@rnmapbox/maps";
 import * as Location from "expo-location";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -25,9 +25,25 @@ const NAV_PITCH = 45;
 export default function MapScreen() {
   const cameraRef = useRef<Mapbox.Camera>(null);
   const [userLocation, setUserLocation] = useState<Coordinate | null>(null);
+  const locationRef = useRef<Coordinate | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [isFollowing, setIsFollowing] = useState(true);
 
   const nav = useNavigation();
+
+  // Reset camera following when navigation starts
+  useEffect(() => {
+    if (nav.mode === "navigating") setIsFollowing(true);
+  }, [nav.mode]);
+
+  const handleTrackingModeChange = useCallback(
+    (event: { nativeEvent: { payload: { followUserLocation: boolean } } }) => {
+      if (nav.mode === "navigating") {
+        setIsFollowing(event.nativeEvent.payload.followUserLocation);
+      }
+    },
+    [nav.mode],
+  );
 
   // Location tracking
   useEffect(() => {
@@ -43,17 +59,22 @@ export default function MapScreen() {
       subscription = await Location.watchPositionAsync(
         {
           accuracy: Location.Accuracy.High,
-          distanceInterval: 10,
+          distanceInterval: 5,
         },
         (location) => {
           const coords: Coordinate = [
             location.coords.longitude,
             location.coords.latitude,
           ];
-          setUserLocation(coords);
+          locationRef.current = coords;
 
           if (nav.mode === "navigating") {
+            // During navigation, only update the hook (step/reroute logic).
+            // Camera tracking is handled natively by Mapbox — no React state needed.
             nav.updateUserLocation(coords);
+          } else {
+            // Outside navigation, update state for camera setCamera calls.
+            setUserLocation(coords);
           }
         },
       );
@@ -90,9 +111,10 @@ export default function MapScreen() {
   }, [nav.mode, nav.route]);
 
   const goToMyLocation = () => {
-    if (!userLocation) return;
+    const loc = userLocation ?? locationRef.current;
+    if (!loc) return;
     cameraRef.current?.setCamera({
-      centerCoordinate: userLocation,
+      centerCoordinate: loc,
       zoomLevel: DEFAULT_ZOOM,
       animationDuration: 1000,
     });
@@ -129,10 +151,11 @@ export default function MapScreen() {
             centerCoordinate: DEFAULT_CENTER,
             zoomLevel: DEFAULT_ZOOM,
           }}
-          followUserLocation={isNavigating}
-          followUserMode={Mapbox.UserTrackingMode.FollowWithCourse}
+          followUserLocation={isNavigating && isFollowing}
+          followUserMode={Mapbox.UserTrackingMode.FollowWithHeading}
           followZoomLevel={isNavigating ? NAV_ZOOM : undefined}
           followPitch={isNavigating ? NAV_PITCH : undefined}
+          onUserTrackingModeChange={handleTrackingModeChange}
         />
         <Mapbox.LocationPuck puckBearingEnabled puckBearing="heading" />
 
@@ -172,8 +195,9 @@ export default function MapScreen() {
           onFocus={nav.startSearching}
           onCancel={nav.cancelSearch}
           onSelect={(feature) => {
-            if (userLocation) {
-              nav.selectDestination(feature, userLocation);
+            const loc = userLocation ?? locationRef.current;
+            if (loc) {
+              nav.selectDestination(feature, loc);
             }
           }}
         />
@@ -192,10 +216,21 @@ export default function MapScreen() {
       {nav.mode === "navigating" && (
         <NavigationPanel
           currentStep={currentStep}
+          distanceToNextManeuver={nav.distanceToNextManeuver}
           remainingDistance={remainingDistance}
           remainingDuration={remainingDuration}
           onEnd={nav.endNavigation}
         />
+      )}
+
+      {/* Re-center button — visible when user pans during navigation */}
+      {isNavigating && !isFollowing && (
+        <Pressable
+          style={styles.recenterButton}
+          onPress={() => setIsFollowing(true)}
+        >
+          <MaterialIcons name="navigation" size={24} color="#fff" />
+        </Pressable>
       )}
 
       {/* Locate button — hidden during navigation */}
@@ -268,5 +303,21 @@ const styles = StyleSheet.create({
   },
   locateButtonPreview: {
     bottom: 160,
+  },
+  recenterButton: {
+    position: "absolute",
+    bottom: 170,
+    alignSelf: "center",
+    backgroundColor: "#1a73e8",
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
