@@ -1,6 +1,6 @@
 import Mapbox from "@rnmapbox/maps";
+import { useUnistyles } from "react-native-unistyles";
 
-import { darkTheme } from "@/styles/theme";
 import type { Coordinate, Route } from "@/types/navigation";
 
 interface RouteOverlayProps {
@@ -12,6 +12,7 @@ export default function RouteOverlay({
   route,
   destination,
 }: RouteOverlayProps) {
+  const { theme } = useUnistyles();
   const routeGeoJSON: GeoJSON.Feature<GeoJSON.LineString> = {
     type: "Feature",
     properties: {},
@@ -33,7 +34,7 @@ export default function RouteOverlay({
         <Mapbox.LineLayer
           id="routeLine"
           style={{
-            lineColor: darkTheme.colors.primary,
+            lineColor: theme.colors.primary,
             lineWidth: 5,
             lineCap: "round",
             lineJoin: "round",
@@ -46,8 +47,8 @@ export default function RouteOverlay({
           id="destinationCircle"
           style={{
             circleRadius: 8,
-            circleColor: darkTheme.colors.destructive,
-            circleStrokeColor: darkTheme.colors.foreground,
+            circleColor: theme.colors.destructive,
+            circleStrokeColor: theme.colors.foreground,
             circleStrokeWidth: 3,
           }}
         />

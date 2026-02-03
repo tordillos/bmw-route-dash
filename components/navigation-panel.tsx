@@ -1,9 +1,8 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Pressable, Text, View } from "react-native";
-import { StyleSheet } from "react-native-unistyles";
+import { StyleSheet, useUnistyles } from "react-native-unistyles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { darkTheme } from "@/styles/theme";
 import type { RouteStep } from "@/types/navigation";
 
 interface NavigationPanelProps {
@@ -50,6 +49,7 @@ export default function NavigationPanel({
   onEnd,
 }: NavigationPanelProps) {
   const insets = useSafeAreaInsets();
+  const { theme } = useUnistyles();
 
   if (!currentStep) return null;
 
@@ -62,14 +62,14 @@ export default function NavigationPanel({
     <View
       style={[
         styles.container,
-        { paddingBottom: insets.bottom + darkTheme.space(3) },
+        { paddingBottom: insets.bottom + theme.space(3) },
       ]}
     >
       <View style={styles.stepCard}>
         <MaterialIcons
           name={icon}
           size={32}
-          color={darkTheme.colors.primary}
+          color={theme.colors.primary}
           style={styles.icon}
         />
         <View style={styles.stepInfo}>
@@ -94,7 +94,7 @@ export default function NavigationPanel({
           <MaterialIcons
             name="close"
             size={20}
-            color={darkTheme.colors.destructiveForeground}
+            color={theme.colors.destructiveForeground}
           />
           <Text style={styles.endText}>End</Text>
         </Pressable>

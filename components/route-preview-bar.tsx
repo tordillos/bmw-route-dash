@@ -1,8 +1,7 @@
 import { Pressable, Text, View } from "react-native";
-import { StyleSheet } from "react-native-unistyles";
+import { StyleSheet, useUnistyles } from "react-native-unistyles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import { darkTheme } from "@/styles/theme";
 import type { Route } from "@/types/navigation";
 
 interface RoutePreviewBarProps {
@@ -30,12 +29,13 @@ export default function RoutePreviewBar({
   onCancel,
 }: RoutePreviewBarProps) {
   const insets = useSafeAreaInsets();
+  const { theme } = useUnistyles();
 
   return (
     <View
       style={[
         styles.container,
-        { paddingBottom: insets.bottom + darkTheme.space(3) },
+        { paddingBottom: insets.bottom + theme.space(3) },
       ]}
     >
       <View style={styles.info}>

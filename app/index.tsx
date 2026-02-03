@@ -3,14 +3,13 @@ import Mapbox from "@rnmapbox/maps";
 import * as Location from "expo-location";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
-import { StyleSheet } from "react-native-unistyles";
+import { StyleSheet, useUnistyles } from "react-native-unistyles";
 
 import NavigationPanel from "@/components/navigation-panel";
 import RouteOverlay from "@/components/route-overlay";
 import RoutePreviewBar from "@/components/route-preview-bar";
 import SearchBar from "@/components/search-bar";
 import useNavigation from "@/hooks/use-navigation";
-import { darkTheme } from "@/styles/theme";
 import type { Coordinate } from "@/types/navigation";
 
 const DEFAULT_CENTER: Coordinate = [12.338, 45.4385];
@@ -19,6 +18,7 @@ const NAV_ZOOM = 17;
 const NAV_PITCH = 45;
 
 export default function MapScreen() {
+  const { theme } = useUnistyles();
   const cameraRef = useRef<Mapbox.Camera>(null);
   const [userLocation, setUserLocation] = useState<Coordinate | null>(null);
   const locationRef = useRef<Coordinate | null>(null);
@@ -179,7 +179,7 @@ export default function MapScreen() {
 
       {nav.loading && (
         <View style={styles.loadingOverlay}>
-          <ActivityIndicator size="large" color={darkTheme.colors.primary} />
+          <ActivityIndicator size="large" color={theme.colors.primary} />
         </View>
       )}
 
@@ -228,7 +228,7 @@ export default function MapScreen() {
           <MaterialIcons
             name="navigation"
             size={24}
-            color={darkTheme.colors.primaryForeground}
+            color={theme.colors.primaryForeground}
           />
         </Pressable>
       )}
@@ -248,9 +248,7 @@ export default function MapScreen() {
             name="my-location"
             size={24}
             color={
-              userLocation
-                ? darkTheme.colors.primaryForeground
-                : darkTheme.colors.input
+              userLocation ? theme.colors.primaryForeground : theme.colors.input
             }
           />
         </Pressable>
