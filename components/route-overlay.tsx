@@ -1,5 +1,6 @@
 import Mapbox from "@rnmapbox/maps";
 
+import { darkTheme } from "@/styles/theme";
 import type { Coordinate, Route } from "@/types/navigation";
 
 interface RouteOverlayProps {
@@ -32,7 +33,7 @@ export default function RouteOverlay({
         <Mapbox.LineLayer
           id="routeLine"
           style={{
-            lineColor: "#1a73e8",
+            lineColor: darkTheme.colors.primary,
             lineWidth: 5,
             lineCap: "round",
             lineJoin: "round",
@@ -45,8 +46,8 @@ export default function RouteOverlay({
           id="destinationCircle"
           style={{
             circleRadius: 8,
-            circleColor: "#e53935",
-            circleStrokeColor: "#fff",
+            circleColor: darkTheme.colors.destructive,
+            circleStrokeColor: darkTheme.colors.foreground,
             circleStrokeWidth: 3,
           }}
         />

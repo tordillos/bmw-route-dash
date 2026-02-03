@@ -1,6 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { darkTheme } from "@/styles/theme";
 import type { Route } from "@/types/navigation";
 
 interface RoutePreviewBarProps {
@@ -30,7 +32,12 @@ export default function RoutePreviewBar({
   const insets = useSafeAreaInsets();
 
   return (
-    <View style={[styles.container, { paddingBottom: insets.bottom + 12 }]}>
+    <View
+      style={[
+        styles.container,
+        { paddingBottom: insets.bottom + darkTheme.space(3) },
+      ]}
+    >
       <View style={styles.info}>
         <Text style={styles.duration}>{formatDuration(route.duration)}</Text>
         <Text style={styles.distance}>{formatDistance(route.distance)}</Text>
@@ -48,59 +55,59 @@ export default function RoutePreviewBar({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((t) => ({
   container: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "#1c1c1e",
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    paddingTop: 16,
-    paddingHorizontal: 16,
+    backgroundColor: t.colors.card,
+    borderTopLeftRadius: t.radius.xxl,
+    borderTopRightRadius: t.radius.xxl,
+    paddingTop: t.space(4),
+    paddingHorizontal: t.space(4),
   },
   info: {
     flexDirection: "row",
     alignItems: "baseline",
-    marginBottom: 16,
+    marginBottom: t.space(4),
   },
   duration: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "700",
-    marginRight: 12,
+    color: t.colors.cardForeground,
+    fontSize: t.fontSize.xxl,
+    fontWeight: t.fontWeight.bold,
+    marginRight: t.space(3),
   },
   distance: {
-    color: "#999",
-    fontSize: 16,
+    color: t.colors.mutedForeground,
+    fontSize: t.fontSize.base,
   },
   actions: {
     flexDirection: "row",
-    gap: 12,
+    gap: t.gap(3),
   },
   cancelButton: {
     flex: 1,
-    backgroundColor: "#333",
-    borderRadius: 12,
-    paddingVertical: 14,
+    backgroundColor: t.colors.secondary,
+    borderRadius: t.radius.xl,
+    paddingVertical: t.space(3.5),
     alignItems: "center",
   },
   cancelText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
+    color: t.colors.secondaryForeground,
+    fontSize: t.fontSize.base,
+    fontWeight: t.fontWeight.semibold,
   },
   startButton: {
     flex: 1,
-    backgroundColor: "#1a73e8",
-    borderRadius: 12,
-    paddingVertical: 14,
+    backgroundColor: t.colors.primary,
+    borderRadius: t.radius.xl,
+    paddingVertical: t.space(3.5),
     alignItems: "center",
   },
   startText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
+    color: t.colors.primaryForeground,
+    fontSize: t.fontSize.base,
+    fontWeight: t.fontWeight.semibold,
   },
-});
+}));

@@ -2,19 +2,15 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Mapbox from "@rnmapbox/maps";
 import * as Location from "expo-location";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  ActivityIndicator,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, Pressable, Text, View } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
 import NavigationPanel from "@/components/navigation-panel";
 import RouteOverlay from "@/components/route-overlay";
 import RoutePreviewBar from "@/components/route-preview-bar";
 import SearchBar from "@/components/search-bar";
 import useNavigation from "@/hooks/use-navigation";
+import { darkTheme } from "@/styles/theme";
 import type { Coordinate } from "@/types/navigation";
 
 const DEFAULT_CENTER: Coordinate = [12.338, 45.4385];
@@ -183,7 +179,7 @@ export default function MapScreen() {
 
       {nav.loading && (
         <View style={styles.loadingOverlay}>
-          <ActivityIndicator size="large" color="#1a73e8" />
+          <ActivityIndicator size="large" color={darkTheme.colors.primary} />
         </View>
       )}
 
@@ -229,7 +225,11 @@ export default function MapScreen() {
           style={styles.recenterButton}
           onPress={() => setIsFollowing(true)}
         >
-          <MaterialIcons name="navigation" size={24} color="#fff" />
+          <MaterialIcons
+            name="navigation"
+            size={24}
+            color={darkTheme.colors.primaryForeground}
+          />
         </Pressable>
       )}
 
@@ -247,7 +247,11 @@ export default function MapScreen() {
           <MaterialIcons
             name="my-location"
             size={24}
-            color={userLocation ? "#fff" : "#666"}
+            color={
+              userLocation
+                ? darkTheme.colors.primaryForeground
+                : darkTheme.colors.input
+            }
           />
         </Pressable>
       )}
@@ -255,7 +259,7 @@ export default function MapScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((t) => ({
   container: {
     flex: 1,
   },
@@ -264,60 +268,56 @@ const styles = StyleSheet.create({
   },
   errorBanner: {
     position: "absolute",
-    top: 60,
-    left: 16,
-    right: 16,
-    backgroundColor: "rgba(200, 0, 0, 0.8)",
-    padding: 12,
-    borderRadius: 8,
+    top: t.space(15),
+    left: t.space(4),
+    right: t.space(4),
+    backgroundColor: t.colors.destructiveOverlay,
+    padding: t.space(3),
+    borderRadius: t.radius.lg,
   },
   errorText: {
-    color: "#fff",
+    color: t.colors.destructiveForeground,
     textAlign: "center",
-    fontSize: 14,
+    fontSize: t.fontSize.sm,
   },
   loadingOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: t.colors.overlay,
     justifyContent: "center",
     alignItems: "center",
   },
   locateButton: {
     position: "absolute",
-    bottom: 40,
-    right: 16,
-    backgroundColor: "#1a73e8",
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    bottom: t.space(10),
+    right: t.space(4),
+    backgroundColor: t.colors.primary,
+    width: t.size(12),
+    height: t.size(12),
+    borderRadius: t.radius.xxxl,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    ...t.shadow.md,
   },
   locateButtonDisabled: {
-    backgroundColor: "#333",
+    backgroundColor: t.colors.secondary,
   },
   locateButtonPreview: {
-    bottom: 160,
+    bottom: t.space(40),
   },
   recenterButton: {
     position: "absolute",
-    bottom: 170,
+    bottom: t.space(42),
     alignSelf: "center",
-    backgroundColor: "#1a73e8",
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    backgroundColor: t.colors.primary,
+    width: t.size(12),
+    height: t.size(12),
+    borderRadius: t.radius.xxxl,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    ...t.shadow.md,
   },
-});
+}));

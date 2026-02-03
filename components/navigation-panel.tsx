@@ -1,7 +1,9 @@
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { darkTheme } from "@/styles/theme";
 import type { RouteStep } from "@/types/navigation";
 
 interface NavigationPanelProps {
@@ -57,12 +59,17 @@ export default function NavigationPanel({
   );
 
   return (
-    <View style={[styles.container, { paddingBottom: insets.bottom + 12 }]}>
+    <View
+      style={[
+        styles.container,
+        { paddingBottom: insets.bottom + darkTheme.space(3) },
+      ]}
+    >
       <View style={styles.stepCard}>
         <MaterialIcons
           name={icon}
           size={32}
-          color="#1a73e8"
+          color={darkTheme.colors.primary}
           style={styles.icon}
         />
         <View style={styles.stepInfo}>
@@ -84,7 +91,11 @@ export default function NavigationPanel({
         </View>
 
         <Pressable style={styles.endButton} onPress={onEnd}>
-          <MaterialIcons name="close" size={20} color="#fff" />
+          <MaterialIcons
+            name="close"
+            size={20}
+            color={darkTheme.colors.destructiveForeground}
+          />
           <Text style={styles.endText}>End</Text>
         </Pressable>
       </View>
@@ -92,38 +103,38 @@ export default function NavigationPanel({
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((t) => ({
   container: {
     position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "#1c1c1e",
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    paddingTop: 16,
-    paddingHorizontal: 16,
+    backgroundColor: t.colors.card,
+    borderTopLeftRadius: t.radius.xxl,
+    borderTopRightRadius: t.radius.xxl,
+    paddingTop: t.space(4),
+    paddingHorizontal: t.space(4),
   },
   stepCard: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: t.space(4),
   },
   icon: {
-    marginRight: 12,
+    marginRight: t.space(3),
   },
   stepInfo: {
     flex: 1,
   },
   instruction: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "600",
+    color: t.colors.cardForeground,
+    fontSize: t.fontSize.lg,
+    fontWeight: t.fontWeight.semibold,
   },
   stepDistance: {
-    color: "#999",
-    fontSize: 14,
-    marginTop: 2,
+    color: t.colors.mutedForeground,
+    fontSize: t.fontSize.sm,
+    marginTop: t.space(0.5),
   },
   bottomBar: {
     flexDirection: "row",
@@ -134,27 +145,27 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   etaTime: {
-    color: "#4caf50",
-    fontSize: 20,
-    fontWeight: "700",
+    color: t.colors.success,
+    fontSize: t.fontSize.xl,
+    fontWeight: t.fontWeight.bold,
   },
   etaDetail: {
-    color: "#999",
-    fontSize: 14,
-    marginTop: 2,
+    color: t.colors.mutedForeground,
+    fontSize: t.fontSize.sm,
+    marginTop: t.space(0.5),
   },
   endButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#e53935",
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    gap: 6,
+    backgroundColor: t.colors.destructive,
+    borderRadius: t.radius.xl,
+    paddingVertical: t.space(2.5),
+    paddingHorizontal: t.space(4),
+    gap: t.gap(1.5),
   },
   endText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
+    color: t.colors.destructiveForeground,
+    fontSize: t.fontSize.base,
+    fontWeight: t.fontWeight.semibold,
   },
-});
+}));
