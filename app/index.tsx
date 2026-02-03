@@ -18,7 +18,7 @@ const NAV_ZOOM = 17;
 const NAV_PITCH = 45;
 
 export default function MapScreen() {
-  const { theme } = useUnistyles();
+  const { theme, rt } = useUnistyles();
   const cameraRef = useRef<Mapbox.Camera>(null);
   const [userLocation, setUserLocation] = useState<Coordinate | null>(null);
   const locationRef = useRef<Coordinate | null>(null);
@@ -140,7 +140,14 @@ export default function MapScreen() {
 
   return (
     <View style={styles.container}>
-      <Mapbox.MapView style={styles.map}>
+      <Mapbox.MapView
+        style={styles.map}
+        styleURL={
+          rt.colorScheme === "dark"
+            ? Mapbox.StyleURL.Dark
+            : Mapbox.StyleURL.Light
+        }
+      >
         <Mapbox.Camera
           ref={cameraRef}
           defaultSettings={{
