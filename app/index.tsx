@@ -10,11 +10,11 @@ import {
   View,
 } from "react-native";
 
-import NavigationPanel from "@/components/NavigationPanel";
-import RouteOverlay from "@/components/RouteOverlay";
-import RoutePreviewBar from "@/components/RoutePreviewBar";
-import SearchBar from "@/components/SearchBar";
-import useNavigation from "@/hooks/useNavigation";
+import NavigationPanel from "@/components/navigation-panel";
+import RouteOverlay from "@/components/route-overlay";
+import RoutePreviewBar from "@/components/route-preview-bar";
+import SearchBar from "@/components/search-bar";
+import useNavigation from "@/hooks/use-navigation";
 import type { Coordinate } from "@/types/navigation";
 
 const DEFAULT_CENTER: Coordinate = [12.338, 45.4385];

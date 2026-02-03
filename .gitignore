@@ -43,5 +43,5 @@ yarn-error.*
 .env
 
 # Claude Code context files
-CLAUDE.md
-**/CLAUDE.md
+claude.md
+**/claude.md
