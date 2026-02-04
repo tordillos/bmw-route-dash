@@ -79,7 +79,6 @@ export default function MapScreen() {
     return () => {
       subscription?.remove();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nav.mode]);
 
   // Camera management based on navigation mode
@@ -160,7 +159,24 @@ export default function MapScreen() {
           followPitch={isNavigating ? NAV_PITCH : undefined}
           onUserTrackingModeChange={handleTrackingModeChange}
         />
-        <Mapbox.LocationPuck puckBearingEnabled puckBearing="heading" />
+        <Mapbox.Images
+          images={{
+            navArrow: require("../assets/images/nav-arrow.png"),
+            navArrowShadow: require("../assets/images/nav-arrow-shadow.png"),
+          }}
+        />
+        <Mapbox.LocationPuck
+          topImage="navArrow"
+          shadowImage="navArrowShadow"
+          puckBearingEnabled
+          puckBearing="course"
+          scale={1.2}
+          pulsing={{
+            isEnabled: true,
+            color: theme.colors.primary,
+            radius: "accuracy",
+          }}
+        />
 
         {(nav.mode === "preview" || nav.mode === "navigating") &&
           nav.route &&
